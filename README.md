@@ -1,6 +1,6 @@
 # react-native-just-app-version
 
-Just fetch app version
+Get the app version of your app.
 
 ## Installation
 
@@ -11,11 +11,12 @@ npm install react-native-just-app-version
 ## Usage
 
 ```js
-import { multiply } from 'react-native-just-app-version';
+import { getAppVersion, getBuildNumber } from 'react-native-just-app-version';
 
 // ...
 
-const result = await multiply(3, 7);
+const appVersion = getAppVersion();
+const buildVersion = getBuildNumber();
 ```
 
 ## Contributing

@@ -3,16 +3,15 @@
 @implementation JustAppVersion
 RCT_EXPORT_MODULE()
 
-// Example method
-// See // https://reactnative.dev/docs/native-modules-ios
-RCT_EXPORT_METHOD(multiply:(double)a
-                  b:(double)b
-                  resolve:(RCTPromiseResolveBlock)resolve
-                  reject:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getAppVersion)
 {
-    NSNumber *result = @(a * b);
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
 
-    resolve(result);
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getBuildNumber)
+{
+    NSString *buildNumberString = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    return @([buildNumberString intValue]);
 }
 
 // Don't compile this code when we build for the old architecture.

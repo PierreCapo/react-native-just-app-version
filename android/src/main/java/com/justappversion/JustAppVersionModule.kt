@@ -3,6 +3,7 @@ package com.justappversion
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
+import android.content.pm.PackageManager
 
 class JustAppVersionModule internal constructor(context: ReactApplicationContext) :
   JustAppVersionSpec(context) {
@@ -11,11 +12,39 @@ class JustAppVersionModule internal constructor(context: ReactApplicationContext
     return NAME
   }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  @ReactMethod
-  override fun multiply(a: Double, b: Double, promise: Promise) {
-    promise.resolve(a * b)
+  @ReactMethod(isBlockingSynchronousMethod = true)
+  override fun getAppVersion(): String {
+    return try {
+      val packageInfo = reactApplicationContext.packageManager.getPackageInfo(
+        reactApplicationContext.packageName,
+        0
+      )
+      packageInfo.versionName
+    } catch (e: PackageManager.NameNotFoundException) {
+      e.printStackTrace()
+      ""
+    }
+  }
+
+  @ReactMethod(isBlockingSynchronousMethod = true)
+  override fun getBuildNumber(): Int {
+    return try {
+      val packageInfo = reactApplicationContext.packageManager.getPackageInfo(
+        reactApplicationContext.packageName,
+        0
+      )
+      val versionCode: Int
+      versionCode = if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+        packageInfo.longVersionCode.toInt() // .toInt() is required because longVersionCode is of type Long
+      } else {
+        @Suppress("DEPRECATION")
+        packageInfo.versionCode
+      }
+      return versionCode
+    } catch (e: PackageManager.NameNotFoundException) {
+      e.printStackTrace()
+      0
+    }
   }
 
   companion object {

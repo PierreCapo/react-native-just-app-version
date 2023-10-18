@@ -1,13 +1,13 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-just-app-version';
+import { getAppVersion, getBuildNumber } from 'react-native-just-app-version';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  const [result, setResult] = React.useState('');
 
   React.useEffect(() => {
-    multiply(3, 7).then(setResult);
+    setResult(getAppVersion() + ' - ' + getBuildNumber());
   }, []);
 
   return (

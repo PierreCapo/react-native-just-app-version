@@ -24,6 +24,10 @@ const JustAppVersion = JustAppVersionModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return JustAppVersion.multiply(a, b);
+export function getAppVersion(): string {
+  return JustAppVersion.getAppVersion();
+}
+
+export function getBuildNumber(): number {
+  return JustAppVersion.getBuildNumber();
 }
