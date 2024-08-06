@@ -375,7 +375,7 @@ PODS:
   - React-jsinspector (0.72.6)
   - React-logger (0.72.6):
     - glog
-  - react-native-just-app-version (0.1.0):
+  - react-native-just-app-version (0.2.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - React-NativeModulesApple (0.72.6):
@@ -693,7 +693,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 3bf18ff7cb03cd8dfdce08fbbc0d15058c1d71ae
   React-jsinspector: 194e32c6aab382d88713ad3dd0025c5f5c4ee072
   React-logger: cebf22b6cf43434e471dc561e5911b40ac01d289
-  react-native-just-app-version: 9f9e3e8365d63d0cb4737b048de5fb134d00e450
+  react-native-just-app-version: c466f7f1eff2f500834de9a6804082f6e2d12f98
   React-NativeModulesApple: 02e35e9a51e10c6422f04f5e4076a7c02243fff2
   React-perflogger: e3596db7e753f51766bceadc061936ef1472edc3
   React-RCTActionSheet: 17ab132c748b4471012abbcdcf5befe860660485
@@ -717,4 +717,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f907cdb419cee0b90edd5390b98e069d1f52f26d
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.14.3
