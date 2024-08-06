@@ -27,7 +27,7 @@ class JustAppVersionModule internal constructor(context: ReactApplicationContext
   }
 
   @ReactMethod(isBlockingSynchronousMethod = true)
-  override fun getBuildNumber(): Int {
+  override fun getBuildNumber(): Double {
     return try {
       val packageInfo = reactApplicationContext.packageManager.getPackageInfo(
         reactApplicationContext.packageName,
@@ -40,10 +40,10 @@ class JustAppVersionModule internal constructor(context: ReactApplicationContext
         @Suppress("DEPRECATION")
         packageInfo.versionCode
       }
-      return versionCode
+      return versionCode.toDouble()
     } catch (e: PackageManager.NameNotFoundException) {
       e.printStackTrace()
-      0
+      0.toDouble()
     }
   }
 
